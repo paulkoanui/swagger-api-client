@@ -1,10 +1,10 @@
 {
   "name": "swagger-api-client",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "authors": [
     "Paul Koanui <paul.koanui@gmail.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An element that wraps the https://github.com/swagger-api/swagger-js library for generating dynamic swagger api clients for easy use in the browser.",
   "keywords": [
     "web-component",
     "web-components",
@@ -15,9 +15,7 @@
   "license": "http://paulkoanui.github.io/LICENSE.txt",
   "homepage": "https://github.com/paulkoanui/swagger-api-client/",
   "ignore": [
-    "/.*",
-    "/test/",
-    "/demo/"
+    "/.*"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
