@@ -71,14 +71,14 @@ Example:
                 url: spec,
                 success: function() {
 
-                    console.log(this.client);
+                    console.log('swagger-client', this.client);
 
                     /**
                      * This event is fired when the Swagger API client has been fully initialized and ready for use.
                      *
                      * @event swagger-client-ready
                      */
-                    this.fire('swagger-client-ready');
+                    this.fire('swagger-client-ready', { loaded: new Date() });
 
                 }.bind(this)
             });

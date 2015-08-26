@@ -1,6 +1,13 @@
 # swagger-api-client
 
-An element providing a starting point for your own reusable Polymer elements.
+An element that wraps the <a href="https://github.com/swagger-api/swagger-js">swagger-js</a> library for generating
+dynamic swagger api clients for easy use in the browser.
+
+Example:
+
+    <swagger-api-client
+        spec="http://petstore.swagger.io/v2/swagger.json">
+    </swagger-api-client>
 
 
 ## Dependencies
