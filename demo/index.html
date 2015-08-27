@@ -36,8 +36,8 @@ This code may only be used under the BSD style license found at http://paulkoanu
     var api = document.querySelector('swagger-api-client');
     api.addEventListener('swagger-client-ready', function () {
 
-        // upon connect, fetch a pet and set contents to element "mydata"
-        api.client.apis.pet.getPetById({petId: 2}, {responseContentType: 'application/json'}, function (data) {
+        // upon connect, fetch pets and set contents to element "mydata"
+        api.client.apis.pet.findPetsByTags({tags: 'tag1,tag2,tag3'}, {responseContentType: 'application/json'}, function (data) {
             document.getElementById("mydata").innerHTML = JSON.stringify(data.obj, null, 2);
         });
 
