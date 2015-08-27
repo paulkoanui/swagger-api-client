@@ -9,6 +9,12 @@ Example:
         spec="http://petstore.swagger.io/v2/swagger.json">
     </swagger-api-client>
 
+## Install
+
+Using Bower:
+
+    bower install swagger-api-client
+
 
 ## Dependencies
 
