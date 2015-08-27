@@ -1,0 +1,48 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 Paul Koanui <paul.koanui@gmail.com>. All rights reserved.
+This code may only be used under the BSD style license found at http://paulkoanui.github.io/LICENSE.txt
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>swagger-api-client Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../swagger-api-client.html">
+    <link rel="import" href="../../paper-material/paper-material.html">
+</head>
+<body>
+
+<swagger-api-client spec="http://petstore.swagger.io/v2/swagger.json"></swagger-api-client>
+
+<h1><code>&lt;swagger-api-client&gt;</code></h1>
+<h4>Behavior upon "ready":</h4>
+<ol>
+    <li>Download Swagger specification: <a href="http://petstore.swagger.io/v2/swagger.json">http://petstore.swagger.io/v2/swagger.json</a>
+    </li>
+    <li>Dynamically generate api client from Swagger specification</li>
+    <li>Fire 'swagger-client-ready'</li>
+    <li>Upon event handler execution, fetch a pet and set contents to element "mydata"</li>
+</ol>
+
+<h4>Output:</h4>
+<paper-material style="padding: 10px; margin: 10px; background-color: whitesmoke">
+    <pre id="mydata"></pre>
+</paper-material>
+
+<script>
+    var api = document.querySelector('swagger-api-client');
+    api.addEventListener('swagger-client-ready', function () {
+
+        // upon connect, fetch pets and set contents to element "mydata"
+        api.client.apis.pet.findPetsByTags({tags: 'tag1,tag2,tag3'}, {responseContentType: 'application/json'}, function (data) {
+            document.getElementById("mydata").innerHTML = JSON.stringify(data.obj, null, 2);
+        });
+
+    });
+</script>
+
+</body>
+</html>

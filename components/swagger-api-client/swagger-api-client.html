@@ -1,0 +1,90 @@
+<!--
+@license
+Copyright (c) 2015 Paul Koanui <paul.koanui@gmail.com>. All rights reserved.
+This code may only be used under the BSD style license found at http://paulkoanui.github.io/LICENSE.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="swagger-import.html">
+
+<!--
+An element that wraps the <a href="https://github.com/swagger-api/swagger-js">swagger-js</a> library for generating
+dynamic swagger api clients for easy use in the browser.
+
+Example:
+
+    <swagger-api-client
+        spec="http://petstore.swagger.io/v2/swagger.json">
+    </swagger-api-client>
+
+@demo
+-->
+<dom-module id="swagger-api-client">
+    <style></style>
+    <template></template>
+</dom-module>
+
+<script>
+
+    Polymer({
+
+        is: 'swagger-api-client',
+
+        properties: {
+
+            /**
+             * The URL of a Swagger API specification.
+             *
+             * @type {string}
+             */
+            spec: {
+                type: String,
+                observer: '_specChanged'
+            },
+            /**
+             * The dynamically generated Swagger API client.<br/>
+             * See https://github.com/swagger-api/swagger-js for more info.
+             *
+             * @type {swagger-client}
+             */
+            client: {
+                type: Object
+            }
+
+        },
+
+        _specChanged: function(){
+            this.loadSpec(this.spec);
+        },
+
+        // Element Behavior
+
+        /**
+         * Dynamically generate a Swagger API client from a Swagger specification.
+         * The event, "swagger-client-ready" is fired when the API client is ready.
+         *
+         * @param {string} The URL of a Swagger API specification.
+         * @fires swagger-client-ready
+         */
+        loadSpec: function(spec) {
+
+            this.client = new SwaggerClient({
+                url: spec,
+                success: function() {
+
+                    console.log('swagger-client', this.client);
+
+                    /**
+                     * This event is fired when the Swagger API client has been fully initialized and ready for use.
+                     *
+                     * @event swagger-client-ready
+                     */
+                    this.fire('swagger-client-ready', { loaded: new Date() });
+
+                }.bind(this)
+            });
+
+        },
+
+    });
+
+</script>
