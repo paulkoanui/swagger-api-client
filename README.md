@@ -1,6 +1,6 @@
 # swagger-api-client
 
-An element that wraps the <a href="https://github.com/swagger-api/swagger-js">swagger-js</a> library for generating
+A Polymer element that wraps the <a href="https://github.com/swagger-api/swagger-js">swagger-js</a> library for generating
 dynamic swagger api clients for easy use in the browser.
 
 Example:
